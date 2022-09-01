@@ -18,7 +18,6 @@ pipeline{
                    sudo git config --global --add safe.directory /var/lib/jenkins/node_app
                    sudo git remote add origin https://github.com/Fearreece/simple_server.git
                    sudo git pull origin main
-                   sudo npm init
                    sudo npm install
                    sudo npm start
                 '''
