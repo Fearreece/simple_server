@@ -14,6 +14,7 @@ pipeline{
                    cd /var/www/html
                    pm2 kill
                    sudo git init
+                   sudo git config --global --add safe.directory /var/www/html
                    sudo git remote add origin https://github.com/Fearreece/simple_server.git
                    sudo git pull origin main
                    sudo npm install
