@@ -11,7 +11,7 @@ pipeline{
             steps{
                 echo('This is the build stage')
                 sh '''
-                    sudo ssh -i "project.pem" -t -o StrictHostKeyChecking=no ubuntu@ec2-3-86-158-102.compute-1.amazonaws.com
+                    sudo ssh -i ~/project.pem -t -o StrictHostKeyChecking=no ubuntu@ec2-3-86-158-102.compute-1.amazonaws.com
                    cd /var/www/html
                    pm2 kill
                    sudo git init
