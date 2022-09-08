@@ -12,7 +12,10 @@ pipeline{
                 echo('This is the build stage')
                 sh '''
                     sudo ssh -i /home/ubuntu/project.pem -t -o StrictHostKeyChecking=no ubuntu@ec2-3-86-158-102.compute-1.amazonaws.com
-                   cd /var/www/html
+                   cd /var/www/
+                   sudo rm -rf html
+                   sudo mkdir html
+                   cd html
                    pm2 kill
                    sudo git init
                    sudo git config --global --add safe.directory /var/www/html
