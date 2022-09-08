@@ -1,5 +1,6 @@
 pipeline{
     agent any
+    tools {nodejs 'node'}
     stages{
         stage("Test"){
             steps{
@@ -10,16 +11,13 @@ pipeline{
             steps{
                 echo('This is the build stage')
                 sh '''
-                   ssh -i /var/lib/jenkins/webserver.pem -t -o StrictHostKeyChecking=no ubuntu@ec2-3-84-163-78.compute-1.amazonaws.com
-                   sudo rm -rf ~/node_app
-                   mkdir ~/node_app
-                   cd ~/node_app
+                   cd /var/www/html
+                   pm2 kill
                    sudo git init
-                   sudo git config --global --add safe.directory /var/lib/jenkins/node_app
                    sudo git remote add origin https://github.com/Fearreece/simple_server.git
                    sudo git pull origin main
                    sudo npm install
-                   sudo npm start
+                    PORT=80 pm2 start server.js 
                 '''
             }
         } 
